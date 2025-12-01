@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotation Generator Application — Femtobiotics | Douglas Bvumbi</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/main.css">
+    
+    <style>
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .project-header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 100px;
+        }
+        
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .project-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform var(--transition-fast);
+            margin-bottom: 2rem;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-2px);
+            color: white;
+        }
+        
+        .project-section {
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .section-number {
+            background: var(--gradient-primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .section-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .section-text {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+        
+        .section-text h3 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .section-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .section-image {
+            text-align: center;
+        }
+        
+        .section-image img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-lg);
+            cursor: pointer;
+            transition: transform var(--transition-fast);
+        }
+        
+        .section-image img:hover {
+            transform: scale(1.02);
+        }
+        
+        .features-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .features-list li {
+            padding: 0.5rem 0;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .features-list li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+        
+        /* Lightbox Styles */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            cursor: pointer;
+        }
+        
+        .lightbox.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close-lightbox:hover {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .section-content {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <div class="logo">
+                <a href="index.html">
+                    <span class="logo-text">Douglas Bvumbi Portfolio</span>
+                </a>
+            </div>
+            
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Project Content -->
+    <div class="project-container">
+        <div class="project-header">
+            <a href="index.html#projects" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                Back to Portfolio
+            </a>
+            <h1 class="project-title">Quotation Generator Application</h1>
+            <h2 class="project-subtitle">Femtobiotics Pharmacy Solutions</h2>
+            <p style="color: var(--text-secondary); max-width: 800px; margin: 0 auto;">
+                A comprehensive Windows application designed to streamline quotation generation for pharmacies. 
+                Built with Visual Studio 2022 and packaged for offline use to support field operations.
+            </p>
+        </div>
+        
+        <!-- Section 1 -->
+        <div class="project-section">
+            <h2 class="section-title">
+                <span class="section-number">1</span>
+                Application Interface & Dashboard
+            </h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <h3>Main Dashboard</h3>
+                    <p>The application features a clean, intuitive interface designed for pharmacy professionals. The main dashboard provides quick access to all essential functions including quotation creation, customer management, and product catalog browsing.</p>
+                    
+                    <h3>Key Features:</h3>
+                    <ul class="features-list">
+                        <li>User-friendly navigation system</li>
+                        <li>Quick quotation generation tools</li>
+                        <li>Customer database integration</li>
+                        <li>Real-time product availability</li>
+                        <li>Offline functionality for field use</li>
+                    </ul>
+                </div>
+                <div class="section-image">
+                    <img src="img/f1.png" alt="Application Dashboard" onclick="openLightbox('img/f1.png')" loading="lazy">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 2 -->
+        <div class="project-section">
+            <h2 class="section-title">
+                <span class="section-number">2</span>
+                Quotation Creation Process
+            </h2>
+            <div class="section-content">
+                <div class="section-image">
+                    <img src="img/f2.png" alt="Quotation Creation" onclick="openLightbox('img/f2.png')" loading="lazy">
+                </div>
+                <div class="section-text">
+                    <h3>Streamlined Workflow</h3>
+                    <p>The quotation creation process has been optimized for speed and accuracy. Users can easily add products, apply discounts, and generate professional quotations within minutes.</p>
+                    
+                    <h3>Process Features:</h3>
+                    <ul class="features-list">
+                        <li>Automatic price calculations</li>
+                        <li>Discount and tax management</li>
+                        <li>Product search and selection</li>
+                        <li>Customer information integration</li>
+                        <li>Instant quotation preview</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Section 3 -->
+        <div class="project-section">
+            <h2 class="section-title">
+                <span class="section-number">3</span>
+                Export & Documentation
+            </h2>
+            <div class="section-content">
+                <div class="section-text">
+                    <h3>Professional Output</h3>
+                    <p>The application generates polished, professional quotations ready for client presentation. Multiple export formats ensure compatibility with various business requirements and client preferences.</p>
+                    
+                    <h3>Export Capabilities:</h3>
+                    <ul class="features-list">
+                        <li>PDF generation with company branding</li>
+                        <li>Excel export for further analysis</li>
+                        <li>Email integration for direct sending</li>
+                        <li>Print-ready formatting</li>
+                        <li>Quotation tracking and history</li>
+                    </ul>
+                    
+                    <h3>Technical Implementation:</h3>
+                    <p>Built using Visual Studio 2022 with C# and .NET Framework, ensuring robust performance and reliability. The application is packaged as a standalone executable, requiring no additional installations for end users.</p>
+                </div>
+                <div class="section-image">
+                    <img src="img/f3.png" alt="Export and Documentation" onclick="openLightbox('img/f3.png')" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-text">Douglas Bvumbi Portfolio</span>
+                    <p>Building innovative digital solutions</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Douglas Bvumbi. All rights reserved.</p>
+                <p>Built with <i class="fas fa-heart"></i> using HTML, CSS & JavaScript</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+
+        if (currentTheme === 'dark') {
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            body.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            themeToggle.innerHTML = newTheme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        });
+
+        // Lightbox functionality
+        function openLightbox(imageSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imageSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close lightbox with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            }
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

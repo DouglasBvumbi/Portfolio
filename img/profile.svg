@@ -1,0 +1,29 @@
+<!-- 
+    SVG Placeholder for Profile Image
+    Replace this with your actual profile photo
+    Recommended: 500x500px JPG or PNG
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+    <defs>
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#2d2d2d;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#8b7355;stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    
+    <!-- Background -->
+    <rect width="500" height="500" fill="url(#grad1)"/>
+    
+    <!-- Avatar Icon -->
+    <circle cx="250" cy="200" r="80" fill="#ffffff" opacity="0.9"/>
+    <circle cx="250" cy="200" r="60" fill="url(#grad1)"/>
+    
+    <!-- Body -->
+    <ellipse cx="250" cy="400" rx="120" ry="100" fill="#ffffff" opacity="0.9"/>
+    
+    <!-- Text -->
+    <text x="250" y="480" font-family="Arial, sans-serif" font-size="24" font-weight="bold" 
+          fill="#ffffff" text-anchor="middle">
+        Add Your Photo
+    </text>
+</svg>

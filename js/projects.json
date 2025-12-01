@@ -1,0 +1,47 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Online Border Management System",
+      "category": "web",
+      "description": "Comprehensive digital platform developed for Zimbabwe's Department of Immigration to streamline travel document processing and visa management. Features secure data handling, automated workflow processes, and real-time status tracking for enhanced efficiency in immigration services.",
+      "image": "img/evisaimg.png",
+      "technologies": ["PHP", "MySQL", "JavaScript", "HTML/CSS"],
+      "liveLink": "https://www.evisa.gov.zw/",
+      "githubLink": "#",
+      "featured": true,
+      "date": "2024-11"
+    },
+    {
+      "id": 2,
+      "title": "Creative Media, Marketing & Student Engagement",
+      "category": "design",
+      "description": "Produced a wide range of promotional materials for the university's learning center (library), including flyers, posters, videos, and digital content. Designed and customized Kumospace virtual environments to support online engagement and branding. Created high-quality visuals using Photoshop, Illustrator, After Effects, and Doodly. Supported student outreach by organizing events, presenting library services, and driving awareness of academic resources through targeted marketing initiatives.",
+      "image": "img/upimg.png",
+      "technologies": ["SQL Server", "Python", "Power BI", "Azure"],
+      "liveLink": "gallery.html",
+      "githubLink": "#",
+      "featured": true,
+      "date": "2024-09"
+    },
+    {
+      "id": 9,
+      "title": "Quotation Generator Application — Femtobiotics",
+      "category": "it",
+      "description": "Designed and developed a standalone Windows application for generating accurate, automated quotations for pharmacies. Built with Visual Studio 2022 and packaged for offline use to support field operations. Implemented clean UI workflows, automatic price calculations, and export-ready quotation templates. Delivered a reliable, production-ready tool currently used by the company to streamline quotation processing.",
+      "image": "img/f1.png",
+      "technologies": ["React Native", "Firebase", "Redux", "Expo"],
+      "liveLink": "femtobiotics.html",
+      "githubLink": "https://github.com/yourusername/project",
+      "featured": true,
+      "date": "2023-02"
+    }
+  ],
+  "instructions": {
+    "howToUpdate": "To update project links, simply modify the 'liveLink' property for each project. Change 'https://your-project-link.com' to your actual project URL.",
+    "addNewProject": "To add a new project, copy an existing project object and modify its properties. Make sure to increment the 'id' value.",
+    "categories": ["web", "design", "it"],
+    "requiredFields": ["id", "title", "category", "description", "image", "technologies", "liveLink"],
+    "optionalFields": ["githubLink", "featured", "date"]
+  }
+}
